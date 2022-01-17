@@ -17,9 +17,13 @@ namespace WebShop.Models
         {
         }
 
+        public virtual DbSet<Tblcustomer> Tblcustomers { get; set; }
         public virtual DbSet<Tblmenuitem> Tblmenuitems { get; set; }
+        public virtual DbSet<Tblpayment> Tblpayments { get; set; }
+        public virtual DbSet<Tblproduct> Tblproducts { get; set; }
         public virtual DbSet<Tblrole> Tblroles { get; set; }
         public virtual DbSet<Tblroleright> Tblrolerights { get; set; }
+        public virtual DbSet<Tblsale> Tblsales { get; set; }
         public virtual DbSet<Tbluser> Tblusers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,6 +38,46 @@ namespace WebShop.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasCharSet("utf8");
+
+            modelBuilder.Entity<Tblcustomer>(entity =>
+            {
+                entity.HasKey(e => e.CustomerId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("tblcustomers");
+
+                entity.Property(e => e.CustomerId)
+                    .HasMaxLength(32)
+                    .HasColumnName("customer_id");
+
+                entity.Property(e => e.CustomerAddress)
+                    .HasMaxLength(255)
+                    .HasColumnName("customer_address");
+
+                entity.Property(e => e.CustomerCnic)
+                    .HasMaxLength(255)
+                    .HasColumnName("customer_cnic");
+
+                entity.Property(e => e.CustomerCreationdate)
+                    .HasColumnType("date")
+                    .HasColumnName("customer_creationdate");
+
+                entity.Property(e => e.CustomerFathername)
+                    .HasMaxLength(255)
+                    .HasColumnName("customer_fathername");
+
+                entity.Property(e => e.CustomerMobileno)
+                    .HasMaxLength(255)
+                    .HasColumnName("customer_mobileno");
+
+                entity.Property(e => e.CustomerName)
+                    .HasMaxLength(255)
+                    .HasColumnName("customer_name");
+
+                entity.Property(e => e.CustomerReference)
+                    .HasMaxLength(255)
+                    .HasColumnName("customer_reference");
+            });
 
             modelBuilder.Entity<Tblmenuitem>(entity =>
             {
@@ -53,6 +97,58 @@ namespace WebShop.Models
                 entity.Property(e => e.MenuitemNo)
                     .HasColumnType("int(11)")
                     .HasColumnName("menuitem_no");
+            });
+
+            modelBuilder.Entity<Tblpayment>(entity =>
+            {
+                entity.HasKey(e => e.PayId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("tblpayments");
+
+                entity.Property(e => e.PayId)
+                    .HasMaxLength(32)
+                    .HasColumnName("pay_id");
+
+                entity.Property(e => e.PayAmount)
+                    .HasPrecision(10)
+                    .HasColumnName("pay_amount");
+
+                entity.Property(e => e.PayDate)
+                    .HasColumnType("date")
+                    .HasColumnName("pay_date");
+
+                entity.Property(e => e.SaleId)
+                    .HasMaxLength(32)
+                    .HasColumnName("sale_id");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .HasColumnName("status");
+            });
+
+            modelBuilder.Entity<Tblproduct>(entity =>
+            {
+                entity.HasKey(e => e.ProductId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("tblproducts");
+
+                entity.Property(e => e.ProductId)
+                    .HasMaxLength(32)
+                    .HasColumnName("product_id");
+
+                entity.Property(e => e.ProductCreationdate)
+                    .HasColumnType("date")
+                    .HasColumnName("product_creationdate");
+
+                entity.Property(e => e.ProductDesc)
+                    .HasMaxLength(255)
+                    .HasColumnName("product_desc");
+
+                entity.Property(e => e.ProductName)
+                    .HasMaxLength(255)
+                    .HasColumnName("product_name");
             });
 
             modelBuilder.Entity<Tblrole>(entity =>
@@ -115,6 +211,50 @@ namespace WebShop.Models
                     .WithMany(p => p.Tblrolerights)
                     .HasForeignKey(d => d.RoleIdFk)
                     .HasConstraintName("tblrolerights_ibfk_2");
+            });
+
+            modelBuilder.Entity<Tblsale>(entity =>
+            {
+                entity.HasKey(e => e.SaleId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("tblsale");
+
+                entity.Property(e => e.SaleId)
+                    .HasMaxLength(32)
+                    .HasColumnName("sale_id");
+
+                entity.Property(e => e.CustomerId)
+                    .HasMaxLength(32)
+                    .HasColumnName("customer_id");
+
+                entity.Property(e => e.Imei1)
+                    .HasMaxLength(255)
+                    .HasColumnName("imei1");
+
+                entity.Property(e => e.Imei2)
+                    .HasMaxLength(255)
+                    .HasColumnName("imei2");
+
+                entity.Property(e => e.ProductId)
+                    .HasMaxLength(32)
+                    .HasColumnName("product_id");
+
+                entity.Property(e => e.SaleMonthlyinstallements)
+                    .HasPrecision(10)
+                    .HasColumnName("sale_monthlyinstallements");
+
+                entity.Property(e => e.SaleRemainingamount)
+                    .HasPrecision(10)
+                    .HasColumnName("sale_remainingamount");
+
+                entity.Property(e => e.SaleTotalamount)
+                    .HasPrecision(10)
+                    .HasColumnName("sale_totalamount");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .HasColumnName("status");
             });
 
             modelBuilder.Entity<Tbluser>(entity =>
