@@ -1,0 +1,117 @@
+@model IEnumerable<WebShop.Models.ViewRecord>
+
+@{
+      Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>View Record</title>
+    <!-- Favicon icon -->
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Custom Stylesheet -->
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+      
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Profile</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">View Record</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-5" >Payment History</h4>
+                                        <div class="active-member">
+                                            <div class="table-responsive">
+                                                <table class="table table-xs mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Payment Date</th>
+                                                            <th>Amount</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>@Html.DisplayFor(modelItem => item.PaymentDate)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                                                                @if(item.Status.ToLower() == "ap")
+                                                                    {
+                                                                        <td class="text-info">Advance Payment</td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td class="text-success">Monthly Installment</td>
+                                                                    }
+                                                                @* <td><span >@Html.ActionLink("View Record", "ViewRecord", "Customer",  new { saleId = item.SaleId} , new {@class = " btn pt-2 btn-rounded btn-outline-info" } )</span></td> *@
+                                                             </tr>
+                                                        }
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/Theme/plugins/common/common.min.js"></script>
+    <script src="~/Theme/js/custom.min.js"></script>
+    <script src="~/Theme/js/settings.js"></script>
+    <script src="~/Theme/js/gleek.js"></script>
+    <script src="~/Theme/js/styleSwitcher.js"></script>
+
+</body>
+
+</html>
