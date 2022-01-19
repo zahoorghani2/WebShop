@@ -46,6 +46,7 @@
                     </ol>
                 </div>
             </div>
+            
             <!-- row -->
 
             <div class="container-fluid">
@@ -77,9 +78,10 @@
                                                 <td>@Html.DisplayFor(modelItem => item.MobilleNo)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.TotalAmount)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.RemainingAmount)</td>
-                                                <td>@Html.DisplayFor(modelItem => item.PaidAmount)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TotalPaidAmount)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.Installment)</td>
-                                                <td><button type="" asp-controller="" asp-action="" class="btn mb-1 btn-outline-primary">Pay</button></td>
+                                                <td>@Html.ActionLink("Pay", "PayInstallment", "MonthlyInstallment",  new { saleId = item.SaleId},  null)</td>
+                                                @* class="btn mb-1 btn-outline-primary" *@
                                                 </tr>
                                               }
                                           

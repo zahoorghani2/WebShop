@@ -77,7 +77,7 @@ namespace WebShop.Controllers
                 dBContext.SaveChanges();
 
             }
-            return Json("ok");
+            return RedirectToAction("Index" , "MonthlyInstallment");
         }
     }
 }

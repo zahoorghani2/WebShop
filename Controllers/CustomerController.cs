@@ -12,6 +12,7 @@ namespace WebShop.Controllers {
         public IActionResult Index () 
         {
             return View(dBContext.Tblcustomers.ToList());
+            
         }
     }
 }

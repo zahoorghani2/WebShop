@@ -1,0 +1,163 @@
+@model WebShop.Models.MonthlyInstallments.MonthlyInstallment
+@{
+      Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Theme/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+
+     <link href="~/Theme/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="~/Theme/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="~/Theme/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="~/Theme/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <!-- Daterange picker plugins css -->
+    <link href="~/Theme/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="~/Theme/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Installment</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Pay</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card border-primary">
+                            <div class="card-header text-center">Pay Monthly Installment</div>
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <form action="">
+                                            <h1 class="mb-5">Payment Form</h1>
+                                            <label class="">Enter Amount</label>
+                                            <input type="number" name="paidamount" class="border-primary form-control input-rounded w-75" placeholder="Enter Amount">
+
+                                            <label class="mt-3">Date Of Payment</label>
+                                            <input type="text" class="form-control border-primary input-rounded w-75" placeholder="Date" id="mdate" name="paydate">
+
+                                            <input type="hidden" name="saleid" id="saleid" value="@Model.SaleId">
+
+
+                                            <button type="submit"  asp-controller="MonthlyInstallment"  asp-action="ConfirmInstallment" class="btn mt-3 mb-1 mt-4 btn-primary btn-rounded px-5 py-2">Confirm Payment</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <h1 class="mb-5">Customer Details</h1>
+                                        <h4>Product Name:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.ProductName</h4>
+                                        <h4>Customer Name:  &nbsp;&nbsp;&nbsp;@Model.CustomerName</h4>
+                                        <h4>Father Name:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.FatherName</h4>
+                                        <h4>Mobile Number:  &nbsp;&nbsp;&nbsp;&nbsp;@Model.MobilleNo</h4>
+                                    </div>
+                                </div>
+
+
+
+                                @* <h5 class="card-title">Primary card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
+                                
+                                    
+
+
+                                    
+                                        
+                            </div>
+                            <div class="card-footer"><small></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/Theme/plugins/common/common.min.js"></script>
+    <script src="~/Theme/js/custom.min.js"></script>
+    <script src="~/Theme/js/settings.js"></script>
+    <script src="~/Theme/js/gleek.js"></script>
+    <script src="~/Theme/js/styleSwitcher.js"></script>
+
+
+
+
+    <script src="~/Theme/plugins/moment/moment.js"></script>
+    <script src="~/Theme/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="~/Theme/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="~/Theme/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="~/Theme/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="~/Theme/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="~/Theme/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="~/Theme/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Theme/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="~/Theme/js/plugins-init/form-pickers-init.js"></script>
+
+</body>
+
+</html>
