@@ -8,9 +8,6 @@ namespace WebShop.Models
 {
     public partial class ShopDBContext : DbContext
     {
-        public ShopDBContext()
-        {
-        }
 
         public ShopDBContext(DbContextOptions<ShopDBContext> options)
             : base(options)
@@ -30,7 +27,6 @@ namespace WebShop.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseMySql("server=localhost;port=8889;database=ShopDB;user=root;password=1234567#;persist security info=False;connect timeout=300", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.32-mysql"));
             }
         }
@@ -251,6 +247,10 @@ namespace WebShop.Models
                 entity.Property(e => e.SaleTotalamount)
                     .HasPrecision(10)
                     .HasColumnName("sale_totalamount");
+
+                entity.Property(e => e.SalePaidAmount)
+                    .HasPrecision(20)
+                    .HasColumnName("sale_paidamount");
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(255)

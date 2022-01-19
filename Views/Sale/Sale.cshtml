@@ -1,0 +1,201 @@
+@model WebShop.Models.SaleModel
+@{
+      Layout = "~/Views/Shared/_Sidebar.cshtml";
+   }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Theme/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="~/Theme/plugins/jquery-steps/css/jquery.steps.css" rel="stylesheet">
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+       
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Sale</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="#" id="step-form-horizontal" class="step-form-horizontal">
+                            <div>
+                                <h4>Customer Details</h4>
+                                <section>
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group ">
+                                                <input type="text" name="customername" class="form-control" placeholder="Customer Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group ">
+                                                <input type="text" name="fathername" class="form-control" placeholder="Father Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" data-inputmask="'mask': '99999-9999999-9'" name="cnic" class="form-control" placeholder="CNIC" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" name="customeraddress" class="form-control" placeholder="Customer Address" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" name="customerrefference" class="form-control" placeholder="Customer Refference" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>  
+                                <h4>Mobile Details</h4>
+                                <section>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input type="text" name="productname" class="form-control" placeholder="Product Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" name="imei1" class="form-control" placeholder="IMEI - 1" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" name="imei2" class="form-control" placeholder="IMEI - 2" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <textarea id="" name="productdescription" rows="4"  class="form-control" placeholder="Product Description" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <h4>Pricing Details</h4>
+                                <section>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" name="totalamount" placeholder="Total Amount" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" name="monthlyinstallment" placeholder="Monthly Installment" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" name="advancepayment" placeholder="Advance Payment" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <h4>Confirmation</h4>
+                                <section>
+                                    <div class="row h-100">
+                                        <div class="col-12 h-100 d-flex flex-column justify-content-center align-items-center">
+                                            <h2>You have submitted form successfully!</h2>
+                                            <p>Thank you very much for you information. we will procceed accordingly.</p>
+                                            <button type="submit" asp-controller="Sale" asp-action="CreateSale" class="btn mb-1 btn-outline-primary">Save</button>
+                                        </div>
+                                        
+                                    </div>
+                                </section>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/Theme/plugins/common/common.min.js"></script>
+    <script src="~/Theme/js/custom.min.js"></script>
+    <script src="~/Theme/js/settings.js"></script>
+    <script src="~/Theme/js/gleek.js"></script>
+    <script src="~/Theme/js/styleSwitcher.js"></script>
+
+
+    <script src="~/Theme/plugins/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="~/Theme/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Theme/js/plugins-init/jquery-steps-init.js"></script>
+
+
+
+    <script src="~/Theme/Cnic-JS/jquery.min.js"></script>
+    <script src="~/Theme/Cnic-JS/jquery.inputmask.bundle.js"></script>
+
+
+    
+
+   <script>
+    $(":input").inputmask();
+
+   </script>
+
+</body>
+
+</html>
