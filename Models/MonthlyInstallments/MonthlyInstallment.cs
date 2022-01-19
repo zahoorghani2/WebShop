@@ -10,11 +10,13 @@ namespace WebShop.Models.MonthlyInstallments
         public Decimal TotalAmount { get; set; }
         public Decimal RemainingAmount { get; set; }
         public Decimal Installment { get; set; }
-        public Decimal PaidAmount { get; set; }
+        public Decimal TotalPaidAmount { get; set; }
         public string CustomerName { get; set; }
         public string FatherName { get; set; }
         public string MobilleNo { get; set; }
         public string ProductName { get; set; }
+        public DateTime PayDate { get; set; }
+        public Decimal PaidAmount { get; set; }
 
     }
 }
