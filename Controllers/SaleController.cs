@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WebShop.Models;
 
@@ -12,7 +13,7 @@ namespace WebShop.Controllers
             this.dBContext = dBContext;
 
         }
-        public IActionResult Sale()
+        public IActionResult Index()
         {
             return View();
         }
@@ -21,24 +22,43 @@ namespace WebShop.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(saleModel.AdvancePayment > saleModel.TotalAmount)
+                {
+                    return RedirectToAction("Index",  "Error");
+                }
+
                 string getDate = DateTime.Now.ToString("yyyy/MM/dd");
-                string customerID = Guid.NewGuid().ToString();
-                Tblcustomer customer = new Tblcustomer();
-                customer.CustomerId = customerID;
-                customer.CustomerName = saleModel.CustomerName;
-                customer.CustomerFathername = saleModel.FatherName;
-                customer.CustomerCnic = saleModel.CNIC;
-                customer.CustomerMobileno = saleModel.MobileNumber;
-                customer.CustomerAddress = saleModel.CustomerAddress;
-                customer.CustomerReference = saleModel.CustomerRefference;
-                customer.CustomerCreationdate = Convert.ToDateTime(getDate);
+
+                Tblcustomer checkCustomer = dBContext.Tblcustomers.Where(x => x.CustomerCnic == saleModel.CNIC).FirstOrDefault();
+
+                 string customerID = null;
+                if(checkCustomer == null)
+                {
+                    customerID = Guid.NewGuid().ToString();
+                    Tblcustomer customer = new Tblcustomer();
+                    customer.CustomerId = customerID;
+                    customer.CustomerName = saleModel.CustomerName;
+                    customer.CustomerFathername = saleModel.FatherName;
+                    customer.CustomerCnic = saleModel.CNIC;
+                    customer.CustomerMobileno = saleModel.MobileNumber;
+                    customer.CustomerAddress = saleModel.CustomerAddress;
+                    customer.CustomerReference = saleModel.CustomerRefference;
+                    customer.CustomerCreationdate = DateTime.Now;
+                    dBContext.Add(customer);
+                    // dBContext.SaveChanges();
+                }else{
+                    customerID = checkCustomer.CustomerId;
+                }
+
+                
 
                 string productID = Guid.NewGuid().ToString();
                 Tblproduct product = new Tblproduct();
                 product.ProductId = productID;
                 product.ProductName = saleModel.ProductName;
                 product.ProductDesc = saleModel.ProductDescription;
-                product.ProductCreationdate = Convert.ToDateTime(getDate);
+                product.ProductCreationdate = DateTime.Now;
+
 
                 string saleID = Guid.NewGuid().ToString();
                 Tblsale sale = new Tblsale();
@@ -52,7 +72,7 @@ namespace WebShop.Controllers
                 sale.SaleRemainingamount = saleModel.TotalAmount - saleModel.AdvancePayment;
                 sale.Status = "Active";
                 sale.SaleMonthlyinstallements = saleModel.MonthlyInstallment;
-                sale.SaleDate = Convert.ToDateTime(getDate);
+                sale.SaleDate = DateTime.Now;
                 
 
                 string PaymentID = Guid.NewGuid().ToString();
@@ -61,17 +81,16 @@ namespace WebShop.Controllers
                 payment.SaleId = saleID;
                 payment.PayAmount = saleModel.AdvancePayment;
                 payment.Status = "ap";
-                payment.PayDate = Convert.ToDateTime(getDate);
+                payment.PayDate = DateTime.Now;
 
-                dBContext.Add(customer);
-                dBContext.SaveChanges();
+                
                 
 
                 dBContext.Add(product);
-                dBContext.SaveChanges();
+                // dBContext.SaveChanges();
 
                 dBContext.Add(sale);
-                dBContext.SaveChanges();
+                // dBContext.SaveChanges();
 
                 dBContext.Add(payment);
                 dBContext.SaveChanges();

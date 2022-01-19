@@ -13,9 +13,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>View Customers</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- Custom Stylesheet -->
     <link href="~/Theme/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="~/Theme/css/style.css" rel="stylesheet">
@@ -63,6 +63,7 @@
                                                 <th>CNIC</th>
                                                 <th>Mobile No</th>
                                                 <th>Address</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -74,6 +75,9 @@
                                                 <td>@Html.DisplayFor(modelItem => item.CustomerCnic)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.CustomerMobileno)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.CustomerAddress)</td>
+                                                @* <td><a asp-action="Profile" asp-controller="Customer" asp-id="@item.CustomerId"><i class="fa fa-eye" aria-hidden="true"></i></a></td> *@
+                                                <td class="text-center"><span>@Html.ActionLink("", "Profile", "Customer",  new { CustomerId = item.CustomerId} , new { @class= " fa fa-eye fa-lg text-info"} ) </span></td>
+                                                @* <td><span >@Html.ActionLink("Pay", "PayInstallment", "MonthlyInstallment",  new { saleId = item.SaleId} , new {@class = " btn btn mb-1 btn-outline-warning text-bold" } )</span></td> *@
                                                 </tr>
                                               }
                                           
@@ -92,17 +96,6 @@
         ***********************************-->
         
         
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
     <!--**********************************
         Main wrapper end

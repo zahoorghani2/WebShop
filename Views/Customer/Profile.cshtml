@@ -1,0 +1,165 @@
+@model IEnumerable<WebShop.Models.CustomerWithMobileData>
+
+@{
+      Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Profile</title>
+    <!-- Favicon icon -->
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Custom Stylesheet -->
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+      
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Customer</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Profile</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media align-items-center mb-4">
+                                    <img class="mr-3" src="~/Theme/images/avatar/11.png" width="80" height="80" alt="">
+                                    <div class="media-body">
+                                        <h3 class="mb-0">@ViewBag.CutomerName</h3>
+                                        <p class="text-muted mb-0"></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-5">
+                                    <div class="col">
+                                        <div class="card card-profile text-center">
+                                            <span class="mb-1 text-primary"><i class="icon-people"></i></span>
+                                            <h3 class="mb-0">263</h3>
+                                            <p class="text-muted px-4">Following</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card card-profile text-center">
+                                            <span class="mb-1 text-warning"><i class="icon-user-follow"></i></span>
+                                            <h3 class="mb-0">263</h3>
+                                            <p class="text-muted">Followers</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button class="btn btn-danger px-5">Follow Now</button>
+                                    </div>
+                                </div>
+
+                                <h4 class="mb-4">About @ViewBag.CutomerName</h4>
+                                @* <p class="text-muted">Hi, I'm Pikamy, has been the industry standard dummy text ever since the 1500s.</p> *@
+                                <ul class="card-profile__info">
+                                    <li class="mb-1"><strong class="text-dark mr-4">Mobile</strong> <span>@ViewBag.CustomerMobileno</span></li>
+                                    <li class="mb-1"><strong class="text-dark mr-4">Refference</strong> <span>@ViewBag.CustomerReference</span></li>
+                                    <li class="mb-1"><strong class="text-dark mr-4">Father Name</strong> <span>@ViewBag.CustomerFathername</span></li>
+                                    <li class="mb-1"><strong class="text-dark mr-4">Address</strong> <span>@ViewBag.CustomerAddress</span></li>
+                                    <li class="mb-1"><strong class="text-dark mr-4">CNIC</strong> <span>@ViewBag.CustomerCnic</span></li>
+                                </ul>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col-lg-8 col-xl-9">
+                       
+
+                        <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="active-member">
+                                        <div class="table-responsive">
+                                            <table class="table table-xs mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>Purchase Date</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.SaleDate)</td>
+                                                        @* <td>@Html.DisplayFor(modelItem => item.SaleStatus)</td> *@
+                                                        @if(item.SaleStatus.ToLower() == "active")
+                                                            {
+                                                                <td class="text-danger">Payment Remaining</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td class="text-success">Payment Completed</td>
+                                                            }
+                                                        <td><span >@Html.ActionLink("View Record", "ViewRecord", "Customer",  new { saleId = item.SaleId} , new {@class = " btn pt-2 btn-rounded btn-outline-info" } )</span></td>
+                                                    </tr>
+                                                }
+                                                    
+                                                
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/Theme/plugins/common/common.min.js"></script>
+    <script src="~/Theme/js/custom.min.js"></script>
+    <script src="~/Theme/js/settings.js"></script>
+    <script src="~/Theme/js/gleek.js"></script>
+    <script src="~/Theme/js/styleSwitcher.js"></script>
+
+</body>
+
+</html>

@@ -23,6 +23,7 @@ namespace WebShop.Controllers
                         join pro in dBContext.Tblproducts on sale.ProductId equals pro.ProductId
                         orderby sale.SaleDate
                         where sale.Status.ToLower() == "active"
+                        orderby sale.SaleDate descending
                         select new 
                         { 
 
@@ -103,8 +104,6 @@ namespace WebShop.Controllers
 
         public IActionResult ConfirmInstallment(MonthlyInstallment mimodel)
         {
-            string getDate = DateTime.Now.ToString("yyyy/MM/dd");
-
             Tblsale getSaleData = dBContext.Tblsales.Where(x => x.SaleId == mimodel.SaleId).FirstOrDefault();
 
             decimal totalPayedAmount = getSaleData.SalePaidAmount += mimodel.PaidAmount;
@@ -123,7 +122,7 @@ namespace WebShop.Controllers
             payment.SaleId = mimodel.SaleId;
             payment.PayAmount = mimodel.PaidAmount;
             payment.Status = "mp";
-            payment.PayDate = Convert.ToDateTime(getDate);
+            payment.PayDate = mimodel.PayDate + DateTime.Now.TimeOfDay;
 
 
             dBContext.Tblsales.Update(getSaleData);
@@ -132,10 +131,6 @@ namespace WebShop.Controllers
             dBContext.Add(payment);
             dBContext.SaveChanges();
 
-            // return Json(new
-            // {
-            //     getSaleData , payment , mimodel
-            // });
             return RedirectToAction("Index" , "MonthlyInstallment");
         }
     }
