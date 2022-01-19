@@ -1,0 +1,126 @@
+
+@model IEnumerable<WebShop.Models.Tblcustomer>
+
+@{
+      Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="~/Theme/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">View Customers</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Data Table</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered zero-configuration">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Father Name</th>
+                                                <th>CNIC</th>
+                                                <th>Mobile No</th>
+                                                <th>Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                              @foreach (var item in Model)
+                                              {
+                                                <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.CustomerFathername)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.CustomerCnic)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.CustomerMobileno)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.CustomerAddress)</td>
+                                                </tr>
+                                              }
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/Theme/plugins/common/common.min.js"></script>
+    <script src="~/Theme/js/custom.min.js"></script>
+    <script src="~/Theme/js/settings.js"></script>
+    <script src="~/Theme/js/gleek.js"></script>
+    <script src="~/Theme/js/styleSwitcher.js"></script>
+
+    @* <script src="~/Theme/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Theme/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Theme/plugins/tables/js/datatable-init/datatable-basic.min.js"></script> *@
+
+</body>
+
+</html>
