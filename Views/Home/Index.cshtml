@@ -204,7 +204,8 @@
                                             @foreach (var item in Model)
                                              {
                                                 <tr>
-                                                    <td><img src="~/Theme/images/avatar/1.jpg" class=" rounded-circle mr-3" alt="">@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                                                    @* <td><img src="~/Theme/images/avatar/1.jpg" class=" rounded-circle mr-3" alt="">@Html.DisplayFor(modelItem => item.CustomerName)</td> *@
+                                                    <td><i class=" rounded-circle fa fa-user text-info fa-lg mr-3" alt=""></i>@Html.DisplayFor(modelItem => item.CustomerName)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
                                                     <td>
                                                         <span>@Html.DisplayFor(modelItem => item.Address)</span>
