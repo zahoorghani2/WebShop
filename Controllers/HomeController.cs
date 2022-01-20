@@ -59,11 +59,11 @@ namespace WebShop.Controllers
                 listDB.Add(dbObj);
             }
 
-            ViewBag.SoldProductCount = SoldProductCount;
-            ViewBag.customerCount = customerCount;
-            ViewBag.monthlyIncome = monthlyIncome;
-            ViewBag.TotalIncome = TotalIncome;
-            ViewBag.TodayIncome = TodayIncome;
+            ViewBag.SoldProductCount    = SoldProductCount;
+            ViewBag.customerCount       = customerCount;
+            ViewBag.monthlyIncome       = Convert.ToInt64(monthlyIncome);
+            ViewBag.TotalIncome         = Convert.ToInt64(TotalIncome);
+            ViewBag.TodayIncome         = Convert.ToInt64(TodayIncome);
             return View(listDB);
         }
 
