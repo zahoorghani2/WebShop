@@ -8,6 +8,12 @@ using Microsoft.Extensions.Hosting;
 using WebShop.Models;
 using WebShop.Repository.Sale;
 
+// Haseeb 
+//"DefaultConnection": "server=localhost; port=8885; database=ShopDB; user=root; password=root; Persist Security Info=False; Connect Timeout=300"  
+  
+ // Zahoor
+// "DefaultConnection": "server=localhost; port=3306; database=ShopDB; user=root; Persist Security Info=False; Connect Timeout=300"  
+
 namespace WebShop
 {
     public class Startup

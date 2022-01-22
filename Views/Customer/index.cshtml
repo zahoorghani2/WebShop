@@ -76,7 +76,15 @@
                                                 <td>@Html.DisplayFor(modelItem => item.CustomerMobileno)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.CustomerAddress)</td>
                                                 @* <td><a asp-action="Profile" asp-controller="Customer" asp-id="@item.CustomerId"><i class="fa fa-eye" aria-hidden="true"></i></a></td> *@
-                                                <td class="text-center"><span>@Html.ActionLink("", "Profile", "Customer",  new { CustomerId = item.CustomerId} , new { @class= " fa fa-eye fa-lg text-info"} ) </span></td>
+                                                <td class="text-center">
+                                                    <span>
+                                                        @Html.ActionLink("", "Profile", "Customer",  new { CustomerId = item.CustomerId} , new { @class= " fa fa-eye fa-lg text-info"} )
+                                                    </span>
+                                                    <span class="ml-2">
+                                                        @Html.ActionLink("", "Edit", "Customer", item, new {@class  = "fa fa-pencil fa-lg text-success"})
+                                                
+                                                    </span>
+                                                </td>
                                                 @* <td><span >@Html.ActionLink("Pay", "PayInstallment", "MonthlyInstallment",  new { saleId = item.SaleId} , new {@class = " btn btn mb-1 btn-outline-warning text-bold" } )</span></td> *@
                                                 </tr>
                                               }
