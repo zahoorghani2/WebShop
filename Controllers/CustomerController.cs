@@ -84,5 +84,10 @@ namespace WebShop.Controllers {
             }
             return View(recList);
         }
+
+        public IActionResult Edit(Tblcustomer customers)
+        {
+            return View(customers);
+        }
     }
 }

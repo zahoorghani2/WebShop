@@ -47,6 +47,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        <div class = "text-right">
+                            <button class = "btn btn-primary mr-0"  onclick="location.href='@Url.Action("ImportSale", "Sale")'">Import</button>
+                        </div>
+                        
                         <form action="#" id="step-form-horizontal" class="step-form-horizontal">
                             <div>
                                 <h4>Customer Details</h4>
@@ -55,32 +59,32 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group ">
-                                                <input type="text" name="customername" class="form-control" placeholder="Customer Name" required>
+                                                <input type="text" name="customername" class="form-control border-info" placeholder="Customer Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group ">
-                                                <input type="text" name="fathername" class="form-control" placeholder="Father Name" required>
+                                                <input type="text" name="fathername" class="form-control border-info" placeholder="Father Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" data-inputmask="'mask': '99999-9999999-9'" name="cnic" class="form-control" placeholder="CNIC" required>
+                                                <input type="text" data-inputmask="'mask': '99999-9999999-9'" name="cnic" class="form-control border-info" placeholder="CNIC" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number" required>
+                                                <input type="text" name="mobilenumber" class="form-control border-info" placeholder="Mobile Number" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" name="customeraddress" class="form-control" placeholder="Customer Address" required>
+                                                <input type="text" name="customeraddress" class="form-control border-info" placeholder="Customer Address" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" name="customerrefference" class="form-control" placeholder="Customer Refference" required>
+                                                <input type="text" name="customerrefference" class="form-control border-info" placeholder="Customer Refference" required>
                                             </div>
                                         </div>
                                     </div>
@@ -90,22 +94,22 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <input type="text" name="productname" class="form-control" placeholder="Product Name" required>
+                                                <input type="text" name="productname" class="form-control border-info" placeholder="Product Name" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" name="imei1" class="form-control" placeholder="IMEI - 1" required>
+                                                <input type="text" name="imei1" class="form-control border-info" placeholder="IMEI - 1" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" name="imei2" class="form-control" placeholder="IMEI - 2" required>
+                                                <input type="text" name="imei2" class="form-control border-info" placeholder="IMEI - 2" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="form-group">
-                                                <textarea id="" name="productdescription" rows="4"  class="form-control" placeholder="Product Description" required></textarea>
+                                                <textarea id="" name="productdescription" rows="4"  class="form-control border-info" placeholder="Product Description" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -115,17 +119,17 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="number" name="totalamount" placeholder="Product Price" required>
+                                                <input class="form-control border-info" type="number" name="totalamount" placeholder="Product Price" required>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="number" name="monthlyinstallment" placeholder="Monthly Installment" required>
+                                                <input class="form-control border-info" type="number" name="monthlyinstallment" placeholder="Monthly Installment" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="number" name="advancepayment" placeholder="Advance Payment" required>
+                                                <input class="form-control border-info" type="number" name="advancepayment" placeholder="Advance Payment" required>
                                             </div>
                                         </div>
                                     </div>
@@ -141,6 +145,7 @@
                                         
                                     </div>
                                 </section>
+                                
                             </div>
                         </form>
                     </div>
