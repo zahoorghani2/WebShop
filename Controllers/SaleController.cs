@@ -146,7 +146,7 @@ namespace WebShop.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                Console.Write(ex.Message);
             }
 
             for (int i = 0; i < csvData.Rows.Count; i++)
@@ -253,7 +253,7 @@ namespace WebShop.Controllers
                 }
             }catch(Exception e)
             {
-                throw;
+                Console.Write(e.Message);
             }
             return filename;
         }
