@@ -1,8 +1,7 @@
-
 @model WebShop.Models.Tblcustomer
 
 @{
-      Layout = "~/Views/Shared/_Sidebar.cshtml";
+    Layout = "~/Views/Shared/_Sidebar.cshtml";
 }
 
 
@@ -13,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>View Customers</title>
+    <title>Edit Customer</title>
     <!-- Favicon icon -->
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- Custom Stylesheet -->
@@ -23,79 +22,105 @@
 </head>
 
 <body>
-    <div class = "main-wrapper">
-        <div class = "content-body">
+    <div class="main-wrapper">
+        <div class="content-body">
             <div class="container-fluid">
-                <h3>Update Customer Details</h3>
-                <div class="row justify-content-center mt-5">
-                    
-                    <div class="col-8">
-                        <form>
-                <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row mb-4">
-                    <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form3Example1" class="form-control" />
-                        <label class="form-label" for="form3Example1">First name</label>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card border-primary">
+                            <div class="card-header text-center">
+                                <h3 class="text-info">Edit Customer</h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" >
+                                    <input type="text" hidden name="CustomerId" value = "@Model.CustomerId">
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <label class="">Customer Name</label>
+                                            <div class="form-group ">
+                                                <input type="text" name="customername" class="form-control border-info"
+                                                    placeholder="Customer Name" required value = "@Model.CustomerName">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="">Father Name</label>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control border-info"
+                                                    placeholder="Father Name" name="CustomerFathername" value = "@Model.CustomerFathername" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <label class="">CNIC</label>
+                                            <div class="form-group ">
+                                                <input type="text" data-inputmask="'mask': '99999-9999999-9'" name="CustomerCnic" class="form-control border-info"
+                                                    placeholder="Customer Cnic" value="@Model.CustomerCnic" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="">Mobile No</label>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control border-info" value="@Model.CustomerMobileno"
+                                                    placeholder="Mobile No" name="CustomerMobileno" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <label class="">Customer Address</label>
+                                            <div class="form-group ">
+                                                <input type="text" name="CustomerAddress" class="form-control border-info"
+                                                    placeholder="Customer Address" value = "@Model.CustomerAddress" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="">Customer Reference</label>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control border-info"
+                                                value="@Model.CustomerReference"   placeholder="Customer Reference" name="CustomerReference" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                    <button type="submit" asp-controller="Customer"
+                                        asp-action="UpdateCustomer"
+                                        class="btn float-right mt-4 btn-info btn-rounded px-5 py-2">Update</button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <div class="card-footer"><small></small>
+                        </div>
                     </div>
-                    </div>
-                    <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form3Example2" class="form-control" />
-                        <label class="form-label" for="form3Example2">Last name</label>
-                    </div>
-                    </div>
                 </div>
-
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control" />
-                    <label class="form-label" for="form3Example3">Email address</label>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4" class="form-control" />
-                    <label class="form-label" for="form3Example4">Password</label>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                    <label class="form-check-label" for="form2Example33">
-                    Subscribe to our newsletter
-                    </label>
-                </div>
-
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
-
-                <!-- Register buttons -->
-                <div class="text-center">
-                    <p>or sign up with:</p>
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                    </button>
-                </div>
-            </form>
-                    </div>
-                </div>
-                 
             </div>
-           
         </div>
+
     </div>
-   
+    </div>
+
+       <script src="~/Theme/Cnic-JS/jquery.min.js"></script>
+    <script src="~/Theme/Cnic-JS/jquery.inputmask.bundle.js"></script>
+
+
+    
+
+   <script>
+    $(":input").inputmask();
+
+   </script>
+
 </body>
