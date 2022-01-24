@@ -68,7 +68,8 @@ namespace WebShop.Controllers {
                                             sale.SaleId,
                                             pay.PayDate,
                                             pay.PayAmount,
-                                            pay.Status
+                                            pay.Status,
+                                            pay.PayId
                                         }).ToList();
 
             List<ViewRecord> recList = new List<ViewRecord>();
@@ -76,10 +77,11 @@ namespace WebShop.Controllers {
             {
                 ViewRecord obj = new ViewRecord();
 
-                obj.SaleId = PaymentRecord[i].SaleId;
-                obj.PaymentDate = PaymentRecord[i].PayDate;
-                obj.Amount = PaymentRecord[i].PayAmount;
-                obj.Status = PaymentRecord[i].Status;
+                obj.SaleId          = PaymentRecord[i].SaleId;
+                obj.PaymentDate     = PaymentRecord[i].PayDate;
+                obj.Amount          = PaymentRecord[i].PayAmount;
+                obj.Status          = PaymentRecord[i].Status;
+                obj.PayId           = PaymentRecord[i].PayId;
 
                 recList.Add(obj);
             }
