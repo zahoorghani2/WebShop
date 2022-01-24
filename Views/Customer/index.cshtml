@@ -19,6 +19,9 @@
     <!-- Custom Stylesheet -->
     <link href="~/Theme/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="~/Theme/css/style.css" rel="stylesheet">
+    <link href="~/Theme/plugins/toastr/css/toastr.min.css" rel="stylesheet">
+
+   
 
 </head>
 
@@ -53,6 +56,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                                @if(ViewBag.msg != null)
+                                {
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        @ViewBag.msg
+                                    </div>
+                                }
+                               
                                 <h4 class="card-title">Data Table</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
@@ -117,6 +127,21 @@
     <script src="~/Theme/js/settings.js"></script>
     <script src="~/Theme/js/gleek.js"></script>
     <script src="~/Theme/js/styleSwitcher.js"></script>
+
+    <script src="~/Theme/plugins/toastr/js/toastr.min.js"></script>
+    <script src="~/Theme/plugins/toastr/js/toastr.init.js"></script>
+
+    <script>
+        var msg = '@ViewBag.msg';
+        console.log(msg);
+        if (msg != "")
+        {
+            document.getElementById("#customer-updated-success").click();
+        }
+           
+    </script>
+
+    
 
     @* <script src="~/Theme/plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="~/Theme/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>

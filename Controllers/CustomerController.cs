@@ -12,6 +12,7 @@ namespace WebShop.Controllers {
         }
         public IActionResult Index () 
         {
+            ViewBag.msg = TempData["msg"];
             return View(dBContext.Tblcustomers.ToList());
         }
 
@@ -85,9 +86,20 @@ namespace WebShop.Controllers {
             return View(recList);
         }
 
+        [HttpGet]
         public IActionResult Edit(Tblcustomer customers)
         {
             return View(customers);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCustomer(Tblcustomer customers)
+        {
+            dBContext.Tblcustomers.Update(customers);
+            dBContext.SaveChanges();
+            TempData.Add("msg", "Customer updated successfully!!!");
+            
+            return RedirectToAction(nameof(Index));
         }
     }
 }
