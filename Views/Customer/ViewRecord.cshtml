@@ -61,12 +61,14 @@
                                                             <th>Payment Date</th>
                                                             <th>Amount</th>
                                                             <th>Status</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach (var item in Model)
                                                         {
                                                             <tr>
+            
                                                                 <td>@Html.DisplayFor(modelItem => item.PaymentDate)</td>
                                                                 <td>@Html.DisplayFor(modelItem => item.Amount)</td>
                                                                 @if(item.Status.ToLower() == "ap")
@@ -77,10 +79,11 @@
                                                                     {
                                                                         <td class="text-success">Monthly Installment</td>
                                                                     }
-                                                                @* <td><span >@Html.ActionLink("View Record", "ViewRecord", "Customer",  new { saleId = item.SaleId} , new {@class = " btn pt-2 btn-rounded btn-outline-info" } )</span></td> *@
+                                                                <td>@Html.ActionLink("", "EditInstallment", "MonthlyInstallment", item , new {@class  = "fa fa-pencil fa-lg text-info"})</td>
+                                                                
                                                              </tr>
                                                         }
-                                                        
+    
                                                     </tbody>
                                                 </table>
                                             </div>

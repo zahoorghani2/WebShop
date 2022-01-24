@@ -42,5 +42,6 @@ namespace WebShop.Models
         [DisplayFormat(DataFormatString = "{0:0.##}")]
         public Decimal Amount { get; set; }
         public string Status { get; set; }
+        public string PayId { get; set; }
     }
 }

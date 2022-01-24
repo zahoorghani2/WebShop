@@ -95,9 +95,6 @@ namespace WebShop.Controllers
                 miobj.MobilleNo     = getSaleDetails.CustomerMobileno;
                 miobj.ProductName   = getSaleDetails.ProductName;
 
-            
-
-                // return Json(getSaleDetails);
             return View(miobj);
         }
 
@@ -114,8 +111,6 @@ namespace WebShop.Controllers
                 getSaleData.Status = "Sold";
             }
 
-            
-
             string PaymentID = Guid.NewGuid().ToString();
             Tblpayment payment = new Tblpayment();
             payment.PayId = PaymentID;
@@ -126,12 +121,54 @@ namespace WebShop.Controllers
 
 
             dBContext.Tblsales.Update(getSaleData);
-            dBContext.SaveChanges();
+            // dBContext.SaveChanges();
 
             dBContext.Add(payment);
             dBContext.SaveChanges();
 
             return RedirectToAction("Index" , "MonthlyInstallment");
+        }
+
+        public IActionResult EditInstallment(ViewRecord item)
+        {
+            // return Json(item);
+            return View(item);
+        }
+
+        public IActionResult UpdateInstallment(string payid , DateTime updatedPaydate , Decimal updatedamount)
+        {
+            Tblpayment getPaymentData = dBContext.Tblpayments.Where(x => x.PayId == payid).FirstOrDefault();
+
+
+            Tblsale getSaleData = dBContext.Tblsales.Where(x => x.SaleId == getPaymentData.SaleId).FirstOrDefault();
+
+            if(getPaymentData.PayAmount == updatedamount)
+            {
+                return Json("Same Amount");
+            }
+            if ((getSaleData.SaleRemainingamount + getPaymentData.PayAmount) < updatedamount )
+            {
+                return Json("Amount is greater than remaining amount");
+            }
+            else
+            {
+                getSaleData.SalePaidAmount = (getSaleData.SalePaidAmount - getPaymentData.PayAmount) + updatedamount;
+                getSaleData.SaleRemainingamount = (getSaleData.SaleRemainingamount + getPaymentData.PayAmount) - updatedamount;
+
+                dBContext.Tblsales.Update(getSaleData);
+
+                getPaymentData.PayAmount = updatedamount;
+                getPaymentData.PayDate = updatedPaydate;
+
+                dBContext.Tblpayments.Update(getPaymentData);
+
+                dBContext.SaveChanges();
+            }
+
+            
+            return Json(new {payid , updatedamount , updatedPaydate , getSaleData.SalePaidAmount , getSaleData.SaleRemainingamount});
+            
+            return RedirectToAction();
         }
     }
 }
