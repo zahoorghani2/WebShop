@@ -7,12 +7,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    @* <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"> *@
     <title>Pay Installments</title>
     <!-- Favicon icon -->
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @* <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" /> *@
     <!-- Custom Stylesheet -->
     <link href="~/Theme/css/style.css" rel="stylesheet">
 
@@ -61,32 +61,53 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card border-primary">
-                            <div class="card-header text-center">Pay Monthly Installment</div>
+                            <div class="card-header text-center"><h3 class="text-info">PAY Monthly Installment</h3></div>
                             <div class="card-body">
 
                                 <div class="row">
+
+                                    <div class="col-6 my-auto">
+                                        <div class="ml-5">
+                                            <h4><span class="mr-3 text-light">Product Name:</span><span class="ml-5 text-dark">@Model.ProductName</span></h4>
+                                            <h4><span class="text-light">Customer Name:</span><span class="ml-5">@Model.CustomerName</span></h4>
+                                            <h4><span class="mr-4 text-light">Father Name:</span><span class="ml-5">@Model.FatherName</span></h4>
+                                            <h4><span class="mr-1 text-light">Mobile Number:</span><span class="ml-5">@Model.MobilleNo</span></h4>
+                                        </div>
+
+                                        
+                                        @* <div class="row bg-white">
+                                            <div class="">
+                                                
+                                            </div>
+                                            
+                                        </div> *@
+                                        @* <h1 class="mb-5">Customer Details</h1> *@
+                                    </div>
+
+
                                     <div class="col-6">
                                         <form action="">
-                                            <h1 class="mb-5">Payment Form</h1>
+                                            @* <h1 class="mb-5">Payment Form</h1> *@
                                             <label class="">Enter Amount</label>
-                                            <input type="number" name="paidamount" class="border-primary form-control input-rounded w-75" placeholder="Enter Amount">
+                                            @* <input type="number" name="paidamount" class="border-primary form-control input-rounded w-75" placeholder="Enter Amount"> *@
+
+                                            @* <div class="col-lg-6"> *@
+                                            <div class="form-group ">
+                                                <input type="number" name="paidamount" class="form-control border-info w-75" placeholder="Enter Amount" required>
+                                            </div>
+                                            @* </div> *@
 
                                             <label class="mt-3">Date Of Payment</label>
-                                            <input type="text" class="form-control border-primary input-rounded w-75" placeholder="Date" id="mdate" name="paydate">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control border-info w-75" placeholder="Date" id="mdate" name="paydate" required>
+                                            </div>
+                                            @* <input type="text" class="form-control border-primary input-rounded w-75" placeholder="Date" id="mdate" name="paydate"> *@
 
                                             <input type="hidden" name="saleid" id="saleid" value="@Model.SaleId">
 
 
-                                            <button type="submit"  asp-controller="MonthlyInstallment"  asp-action="ConfirmInstallment" class="btn mt-3 mb-1 mt-4 btn-primary btn-rounded px-5 py-2">Confirm Payment</button>
+                                            <button type="submit"  asp-controller="MonthlyInstallment"  asp-action="ConfirmInstallment" class="btn mt-3 mb-1 mt-4 btn-info btn-rounded px-5 py-2">Confirm Payment</button>
                                         </form>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h1 class="mb-5">Customer Details</h1>
-                                        <h4>Product Name:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.ProductName</h4>
-                                        <h4>Customer Name:  &nbsp;&nbsp;&nbsp;@Model.CustomerName</h4>
-                                        <h4>Father Name:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.FatherName</h4>
-                                        <h4>Mobile Number:  &nbsp;&nbsp;&nbsp;&nbsp;@Model.MobilleNo</h4>
                                     </div>
                                 </div>
 
@@ -113,18 +134,6 @@
             Content body end
         ***********************************-->
         
-        
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
     <!--**********************************
         Main wrapper end
