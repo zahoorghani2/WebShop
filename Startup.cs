@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebShop.Models;
-using WebShop.Repository.Sale;
 
 // Haseeb 
 //"DefaultConnection": "server=localhost; port=8885; database=ShopDB; user=root; password=root; Persist Security Info=False; Connect Timeout=300"  
@@ -33,11 +32,6 @@ namespace WebShop
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<ShopDBContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
 
-            #region 
-            services.AddScoped<ISaleLogic>();
-            services.AddScoped<SaleLogic>();
-            services.AddScoped<SaleValidation>();
-            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
