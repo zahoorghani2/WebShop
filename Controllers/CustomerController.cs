@@ -59,7 +59,42 @@ namespace WebShop.Controllers {
 
         public IActionResult ViewRecord(string saleId)
         {
-            var PaymentRecord = (from sale in dBContext.Tblsales
+            List<ViewRecord> recList = new List<ViewRecord>();
+
+            if(TempData.Count != 0)
+            {
+                // ViewBag is from UpdateInstallment Function
+                ViewBag.amountUpdated   = TempData["amountUpdated"];
+                string sale_id                 = TempData["sale_id"].ToString();
+                
+                var PaymentRecord = (from sale in dBContext.Tblsales
+                                        join pay in dBContext.Tblpayments on sale.SaleId equals pay.SaleId
+                                        where sale.SaleId == sale_id
+                                        orderby pay.PayDate descending
+                                        select new 
+                                        {
+                                            sale.SaleId,
+                                            pay.PayDate,
+                                            pay.PayAmount,
+                                            pay.Status,
+                                            pay.PayId
+                                        }).ToList();
+                for(int i=0; i< PaymentRecord.Count(); i++)
+                {
+                    ViewRecord obj = new ViewRecord();
+
+                    obj.SaleId          = PaymentRecord[i].SaleId;
+                    obj.PaymentDate     = PaymentRecord[i].PayDate;
+                    obj.Amount          = PaymentRecord[i].PayAmount;
+                    obj.Status          = PaymentRecord[i].Status;
+                    obj.PayId           = PaymentRecord[i].PayId;
+
+                    recList.Add(obj);
+                }
+            }
+            else
+            {
+                var PaymentRecord = (from sale in dBContext.Tblsales
                                         join pay in dBContext.Tblpayments on sale.SaleId equals pay.SaleId
                                         where sale.SaleId == saleId
                                         orderby pay.PayDate descending
@@ -72,19 +107,20 @@ namespace WebShop.Controllers {
                                             pay.PayId
                                         }).ToList();
 
-            List<ViewRecord> recList = new List<ViewRecord>();
-            for(int i=0; i< PaymentRecord.Count(); i++)
-            {
-                ViewRecord obj = new ViewRecord();
+                for(int i=0; i< PaymentRecord.Count(); i++)
+                {
+                    ViewRecord obj = new ViewRecord();
 
-                obj.SaleId          = PaymentRecord[i].SaleId;
-                obj.PaymentDate     = PaymentRecord[i].PayDate;
-                obj.Amount          = PaymentRecord[i].PayAmount;
-                obj.Status          = PaymentRecord[i].Status;
-                obj.PayId           = PaymentRecord[i].PayId;
+                    obj.SaleId          = PaymentRecord[i].SaleId;
+                    obj.PaymentDate     = PaymentRecord[i].PayDate;
+                    obj.Amount          = PaymentRecord[i].PayAmount;
+                    obj.Status          = PaymentRecord[i].Status;
+                    obj.PayId           = PaymentRecord[i].PayId;
 
-                recList.Add(obj);
+                    recList.Add(obj);
+                }
             }
+
             return View(recList);
         }
 
