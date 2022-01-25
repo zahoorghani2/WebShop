@@ -4,6 +4,7 @@ using System.Linq;
 using WebShop.Models.MonthlyInstallments;
 using System.Collections.Generic;
 using System;
+using Newtonsoft.Json;
 
 namespace WebShop.Controllers
 {
@@ -131,8 +132,13 @@ namespace WebShop.Controllers
 
         public IActionResult EditInstallment(ViewRecord item)
         {
-            // return Json(item);
-            return View(item);
+            ViewBag.SameAmount      = TempData["SameAmount"];
+            ViewBag.updatedDate     = TempData["updatedDate"];
+            ViewBag.updatedAmount   = TempData["updatedAmount"];
+            ViewBag.payid          = TempData["payid"];
+            
+
+            return PartialView(item);
         }
 
         public IActionResult UpdateInstallment(string payid , DateTime updatedPaydate , Decimal updatedamount)
@@ -144,11 +150,19 @@ namespace WebShop.Controllers
 
             if(getPaymentData.PayAmount == updatedamount)
             {
-                return Json("Same Amount");
+                TempData.Add("SameAmount" , "Same Amount ...");
+                TempData.Add("updatedAmount" , updatedamount.ToString());
+                TempData.Add("updatedDate" , updatedPaydate);
+                TempData.Add("payid" , payid);
+                return RedirectToAction(nameof(EditInstallment));
             }
             if ((getSaleData.SaleRemainingamount + getPaymentData.PayAmount) < updatedamount )
             {
-                return Json("Amount is greater than remaining amount");
+                TempData.Add("SameAmount" , "Amount is exceeding the remaining amount ...");
+                TempData.Add("updatedAmount" , updatedamount.ToString());
+                TempData.Add("updatedDate" , updatedPaydate);
+                TempData.Add("payid" , payid);
+                return RedirectToAction(nameof(EditInstallment));
             }
             else
             {
@@ -158,17 +172,16 @@ namespace WebShop.Controllers
                 dBContext.Tblsales.Update(getSaleData);
 
                 getPaymentData.PayAmount = updatedamount;
-                getPaymentData.PayDate = updatedPaydate;
+                getPaymentData.PayDate = updatedPaydate + DateTime.Now.TimeOfDay;
 
                 dBContext.Tblpayments.Update(getPaymentData);
 
                 dBContext.SaveChanges();
+                TempData.Add("amountUpdated" , "Amount Updated Successfully");
+                TempData.Add("sale_id" , getSaleData.SaleId);
+                return RedirectToAction("ViewRecord" , "Customer");
             }
 
-            
-            return Json(new {payid , updatedamount , updatedPaydate , getSaleData.SalePaidAmount , getSaleData.SaleRemainingamount});
-            
-            return RedirectToAction();
         }
     }
 }
