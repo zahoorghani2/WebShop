@@ -76,10 +76,10 @@
                                                 <td><h4>@Html.DisplayFor(modelItem => item.ProductName)</h4></td>
                                                 <td class="text-dark">@Html.DisplayFor(modelItem => item.CustomerName)</td>
                                                 <td class="text-dark">@Html.DisplayFor(modelItem => item.MobilleNo)</td>
-                                                <td><h3><span class="badge pt-2 badge-info px-2">@Html.DisplayFor(modelItem => item.TotalAmount)</span></h3></td>
-                                                <td><h3><span class="badge pt-2 badge-danger px-2">@Html.DisplayFor(modelItem => item.RemainingAmount)</span></h3></td>
-                                                <td><h3><span class="badge pt-2 badge-success px-2">@Html.DisplayFor(modelItem => item.TotalPaidAmount)</span></h3></td>
-                                                <td><h3><span class="badge pt-2 badge-dark px-2">@Html.DisplayFor(modelItem => item.Installment)</span></h3></td>
+                                                <td><h3><span class="badge pt-2 badge-info w-75">@Html.DisplayFor(modelItem => item.TotalAmount)</span></h3></td>
+                                                <td><h3><span class="badge pt-2 badge-danger w-75">@Html.DisplayFor(modelItem => item.RemainingAmount)</span></h3></td>
+                                                <td><h3><span class="badge pt-2 badge-success w-75">@Html.DisplayFor(modelItem => item.TotalPaidAmount)</span></h3></td>
+                                                <td><h3><span class="badge pt-2 badge-dark w-75">@Html.DisplayFor(modelItem => item.Installment)</span></h3></td>
                                                 <td><span >@Html.ActionLink("Pay", "PayInstallment", "MonthlyInstallment",  new { saleId = item.SaleId} , new {@class = " btn btn pt-2 btn-outline-info" } )</span>
                                                  <span class="ml-2">@Html.ActionLink("", "ViewRecord", "Customer",  new { saleId = item.SaleId} , new {@class = "fa fa-eye fa-lg text-info" } )</span></td>
                                                 </tr>
