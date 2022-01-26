@@ -177,7 +177,7 @@ namespace WebShop.Controllers
                 dBContext.Tblpayments.Update(getPaymentData);
 
                 dBContext.SaveChanges();
-                TempData.Add("amountUpdated" , "Amount Updated Successfully");
+                TempData.Add("amountUpdated" , "Amount Updated Successfully ...");
                 TempData.Add("sale_id" , getSaleData.SaleId);
                 return RedirectToAction("ViewRecord" , "Customer");
             }
